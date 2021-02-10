@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import MenuContext, { MenuConsumer } from './MenuContext'
+import {MenuContext} from './MenuContext'
 
 class Nav extends Component{
     static contextType = MenuContext
@@ -20,14 +20,23 @@ class Nav extends Component{
         // Validate that all variables exist
         if(menuOpen){
             // show navbar
-            nav.classList.toggle('show')
+            nav.classList.add('show')
             // change icon
             // toggle.classList.toggle('bx-x')
             // add padding to body
-            bodypd.classList.toggle('body-pd')
+            bodypd.classList.add('body-pd')
             // add padding to header
-            headerpd.classList.toggle('body-pd')
-        }  
+            headerpd.classList.add('body-pd')
+        } else{
+            // show navbar
+            nav.classList.remove('show')
+            // change icon
+            // toggle.classList.toggle('bx-x')
+            // add padding to body
+            bodypd.classList.remove('body-pd')
+            // add padding to header
+            headerpd.classList.remove('body-pd')
+        }
     }
 
     render(){

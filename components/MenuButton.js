@@ -1,12 +1,11 @@
 import React, { Component } from  'react'
-import MenuContext, { MenuConsumer } from './MenuContext'
+import  {MenuContext, MenuConsumer } from './MenuContext'
 
 class MenuButton extends Component{
     static contextType = MenuContext
 
-    constructor({}){
+    constructor(){
         super()
-
     }
 
     render() {    

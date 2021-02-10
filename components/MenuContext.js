@@ -1,29 +1,30 @@
 import React, { Component } from  'react'
 
-const MenuContext = React.createContext(0)
+export const MenuContext = React.createContext(0)
 
 class MenuProvider extends Component{
-    constructor({children}){
-        super(children)
+    constructor(){
+        super()
 
         this.state = {
             menuOpen: false
         }
+
         this.toggleMenuOpen = this.toggleMenuOpen.bind(this)
     }
 
     toggleMenuOpen(){
-        this.setState(
-            currentState=>{
-                return {menuOpen: (currentState.menuOpen) ? false: true}
-            }
-        )
+        this.setState({
+            menuOpen: this.state.menuOpen ? false : true
+        })
     }
 
-    toggleMenuClick = (event) =>{
-        event.stopPropagation()
-        event.nativeEvent.stopImmediatePropagation()
-        this.toggleMenuOpen()
+    componentDidMount(){
+        if (window.innerWidth > 764) {
+            this.setState({
+                menuOpen: true
+            })
+        }        
     }
 
     render() {
@@ -46,9 +47,5 @@ class MenuProvider extends Component{
         )
     }
 }
-
-export const MenuConsumer = MenuContext.Consumer
-
-export default MenuContext
 
 export {MenuProvider}
